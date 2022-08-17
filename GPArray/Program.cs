@@ -2,68 +2,45 @@
 {
     class Program
     {
+        //The array for the details of the arrangement in text
+        static string[] arrangements = new string[100];
+        //Multidimensional array :int [100,3]{ {0,1,2} {0,1,2} ......x100}
+        //Multidimensional array :int [100,3,2]{ {0,1}{0,1,2} {0,1,2} ......x100}
+        static int[,] tickets = new int[1000,2];
         static void Main(string[] args)
         {
-            Menu();
+            //Add data to the array
+            AddtoArray();
+            // Loop menu infinite
+            while (true)
+            {
+                Menu();
+            }
+            
         }
         static void Menu()
         {
-            Console.WriteLine("BIllet System");
-            Console.WriteLine( " 1.Vis arrangementer \n 2.Kommer Senere ");
-            Console.WriteLine("");
-            switch (Console.ReadKey().Key)
+            
+            Console.WriteLine("Billet System");
+            Console.WriteLine("1.Show\n2.Køb Biilet\n3.Vis All billeter\n Enter choice: ");
+            //switch case for the numeric key pressed
+            switch (Console.ReadKey(true).Key)
             {
-                case ConsoleKey.Backspace:
-                    break;
-                case ConsoleKey.Tab:
-                    break;
-                case ConsoleKey.Clear:
-                    break;
-                case ConsoleKey.Enter:
-                    break;
-                case ConsoleKey.Pause:
-                    break;
-                case ConsoleKey.Escape:
-                    break;
-                case ConsoleKey.Spacebar:
-                    break;
-                case ConsoleKey.PageUp:
-                    break;
-                case ConsoleKey.PageDown:
-                    break;
-                case ConsoleKey.End:
-                    break;
-                case ConsoleKey.Home:
-                    break;
-                case ConsoleKey.LeftArrow:
-                    break;
-                case ConsoleKey.UpArrow:
-                    break;
-                case ConsoleKey.RightArrow:
-                    break;
-                case ConsoleKey.DownArrow:
-                    break;
-                case ConsoleKey.Select:
-                    break;
-                case ConsoleKey.Print:
-                    break;
-                case ConsoleKey.Execute:
-                    break;
-                case ConsoleKey.PrintScreen:
-                    break;
-                case ConsoleKey.Insert:
-                    break;
-                case ConsoleKey.Delete:
-                    break;
-                case ConsoleKey.Help:
-                    break;
-                case ConsoleKey.D0:
-                    break;
+
+                //Both cases points to the same code
+                case ConsoleKey.NumPad1:
                 case ConsoleKey.D1:
+                    ShowAllArrangements();
                     break;
+                case ConsoleKey.NumPad2:
                 case ConsoleKey.D2:
+                    ShowAllArrangements();
+                    int t = BuyTicket();
+                    Console.Write("Ticket number:"+t);
                     break;
+                case ConsoleKey.NumPad3:
                 case ConsoleKey.D3:
+                    ShowTicketBought();
                     break;
                 case ConsoleKey.D4:
                     break;
@@ -77,74 +54,7 @@
                     break;
                 case ConsoleKey.D9:
                     break;
-                case ConsoleKey.A:
-                    break;
-                case ConsoleKey.B:
-                    break;
-                case ConsoleKey.C:
-                    break;
-                case ConsoleKey.D:
-                    break;
-                case ConsoleKey.E:
-                    break;
-                case ConsoleKey.F:
-                    break;
-                case ConsoleKey.G:
-                    break;
-                case ConsoleKey.H:
-                    break;
-                case ConsoleKey.I:
-                    break;
-                case ConsoleKey.J:
-                    break;
-                case ConsoleKey.K:
-                    break;
-                case ConsoleKey.L:
-                    break;
-                case ConsoleKey.M:
-                    break;
-                case ConsoleKey.N:
-                    break;
-                case ConsoleKey.O:
-                    break;
-                case ConsoleKey.P:
-                    break;
-                case ConsoleKey.Q:
-                    break;
-                case ConsoleKey.R:
-                    break;
-                case ConsoleKey.S:
-                    break;
-                case ConsoleKey.T:
-                    break;
-                case ConsoleKey.U:
-                    break;
-                case ConsoleKey.V:
-                    break;
-                case ConsoleKey.W:
-                    break;
-                case ConsoleKey.X:
-                    break;
-                case ConsoleKey.Y:
-                    break;
-                case ConsoleKey.Z:
-                    break;
-                case ConsoleKey.LeftWindows:
-                    break;
-                case ConsoleKey.RightWindows:
-                    break;
-                case ConsoleKey.Applications:
-                    break;
-                case ConsoleKey.Sleep:
-                    break;
-                case ConsoleKey.NumPad0:
-                    break;
-                case ConsoleKey.NumPad1:
-                    break;
-                case ConsoleKey.NumPad2:
-                    break;
-                case ConsoleKey.NumPad3:
-                    break;
+                               
                 case ConsoleKey.NumPad4:
                     break;
                 case ConsoleKey.NumPad5:
@@ -157,153 +67,99 @@
                     break;
                 case ConsoleKey.NumPad9:
                     break;
-                case ConsoleKey.Multiply:
-                    break;
-                case ConsoleKey.Add:
-                    break;
-                case ConsoleKey.Separator:
-                    break;
-                case ConsoleKey.Subtract:
-                    break;
-                case ConsoleKey.Decimal:
-                    break;
-                case ConsoleKey.Divide:
-                    break;
-                case ConsoleKey.F1:
-                    break;
-                case ConsoleKey.F2:
-                    break;
-                case ConsoleKey.F3:
-                    break;
-                case ConsoleKey.F4:
-                    break;
-                case ConsoleKey.F5:
-                    break;
-                case ConsoleKey.F6:
-                    break;
-                case ConsoleKey.F7:
-                    break;
-                case ConsoleKey.F8:
-                    break;
-                case ConsoleKey.F9:
-                    break;
-                case ConsoleKey.F10:
-                    break;
-                case ConsoleKey.F11:
-                    break;
-                case ConsoleKey.F12:
-                    break;
-                case ConsoleKey.F13:
-                    break;
-                case ConsoleKey.F14:
-                    break;
-                case ConsoleKey.F15:
-                    break;
-                case ConsoleKey.F16:
-                    break;
-                case ConsoleKey.F17:
-                    break;
-                case ConsoleKey.F18:
-                    break;
-                case ConsoleKey.F19:
-                    break;
-                case ConsoleKey.F20:
-                    break;
-                case ConsoleKey.F21:
-                    break;
-                case ConsoleKey.F22:
-                    break;
-                case ConsoleKey.F23:
-                    break;
-                case ConsoleKey.F24:
-                    break;
-                case ConsoleKey.BrowserBack:
-                    break;
-                case ConsoleKey.BrowserForward:
-                    break;
-                case ConsoleKey.BrowserRefresh:
-                    break;
-                case ConsoleKey.BrowserStop:
-                    break;
-                case ConsoleKey.BrowserSearch:
-                    break;
-                case ConsoleKey.BrowserFavorites:
-                    break;
-                case ConsoleKey.BrowserHome:
-                    break;
-                case ConsoleKey.VolumeMute:
-                    break;
-                case ConsoleKey.VolumeDown:
-                    break;
-                case ConsoleKey.VolumeUp:
-                    break;
-                case ConsoleKey.MediaNext:
-                    break;
-                case ConsoleKey.MediaPrevious:
-                    break;
-                case ConsoleKey.MediaStop:
-                    break;
-                case ConsoleKey.MediaPlay:
-                    break;
-                case ConsoleKey.LaunchMail:
-                    break;
-                case ConsoleKey.LaunchMediaSelect:
-                    break;
-                case ConsoleKey.LaunchApp1:
-                    break;
-                case ConsoleKey.LaunchApp2:
-                    break;
-                case ConsoleKey.Oem1:
-                    break;
-                case ConsoleKey.OemPlus:
-                    break;
-                case ConsoleKey.OemComma:
-                    break;
-                case ConsoleKey.OemMinus:
-                    break;
-                case ConsoleKey.OemPeriod:
-                    break;
-                case ConsoleKey.Oem2:
-                    break;
-                case ConsoleKey.Oem3:
-                    break;
-                case ConsoleKey.Oem4:
-                    break;
-                case ConsoleKey.Oem5:
-                    break;
-                case ConsoleKey.Oem6:
-                    break;
-                case ConsoleKey.Oem7:
-                    break;
-                case ConsoleKey.Oem8:
-                    break;
-                case ConsoleKey.Oem102:
-                    break;
-                case ConsoleKey.Process:
-                    break;
-                case ConsoleKey.Packet:
-                    break;
-                case ConsoleKey.Attention:
-                    break;
-                case ConsoleKey.CrSel:
-                    break;
-                case ConsoleKey.ExSel:
-                    break;
-                case ConsoleKey.EraseEndOfFile:
-                    break;
-                case ConsoleKey.Play:
-                    break;
-                case ConsoleKey.Zoom:
-                    break;
-                case ConsoleKey.NoName:
-                    break;
-                case ConsoleKey.Pa1:
-                    break;
-                case ConsoleKey.OemClear:
-                    break;
+
                 default:
                     break;
+                
             }
+        }
+        /// <summary>
+        /// Shows all tickets that have been purchased by looping thrru all the multi
+        /// array,and stopping when empty
+        /// </summary>
+        /// <returns></returns>
+        static void ShowTicketBought()
+        {
+            Console.WriteLine("Antal\t Arrangement\t Lokation");
+            for (int i = 0; i < tickets.Length; i++)
+            {
+                // if its empty we stop the loop
+                if (tickets[i, 0] == 0) return;
+                string arr = arrangements[tickets[i,1]];
+                string [] splitArray = arr.Split("- ");
+                Console.WriteLine(tickets[i, 0] +" \t"+splitArray[0]+"\t"+ splitArray[1]);
+            }
+        }
+        /// <summary>
+        ///  Buy Ticket for the concert you are looking for 1 or 2 or 3
+        /// </summary>
+        /// <returns>int  next free spot</returns>
+        static int BuyTicket()
+        {
+            Console.Write("Indstat Nummer på arragement du ønsker at købe billet: ");
+            string input =Console.ReadLine();
+            //Gets the string and tries to convert to int if success returns true and it ouputs int
+            // if fail nothing happens
+            int.TryParse(input, out int arrangementNumber);
+
+            Console.Write("Enter the nymber of billets: ");
+            //input = Console.ReadLine();
+            // No reason to add another string,We ask directly on the readline
+            int.TryParse(Console.ReadLine(), out int amountOfTickets);
+            
+            
+            int freeSpot=GetNextFreeSpotInTicketArray();
+            // We insert out the ticket data in out multi array
+            //First the 0 pos and then the 1 pos
+            int[] temp = {amountOfTickets, arrangementNumber};
+            tickets[freeSpot,0]=amountOfTickets;
+            tickets[freeSpot, 0] = arrangementNumber;
+            return freeSpot;
+
+        }
+      /// <summary>
+      /// Loops through all the ticket array and return first empty spot unless its full and then it starts over 0
+      /// </summary>
+      /// <returns></returns>
+        static int GetNextFreeSpotInTicketArray()
+        {
+            for (int i = 0; i < tickets.Length; i++)
+            {
+                
+                if (tickets[i,0] == 0) 
+                { 
+                    return i;
+                }
+            }
+            return 0;
+        }
+        static void ShowAllArrangements()
+        {
+            foreach (string  arr in arrangements)
+            {
+                ShowArrangements(arr);
+            }
+        }
+
+        private static void ShowArrangements(string arr)
+        {
+            if (arr != null && arr != "")
+            {
+                //indexof takes the data of the array and ask what position it
+                // have in the array.
+                int i = Array.IndexOf(arrangements, arr);
+                Console.WriteLine(i + " " + arr);
+            }
+        }
+
+        static void AddtoArray()
+        {
+            arrangements[0] = "Lil Johan - hello ";
+            arrangements[1] = "Deagle - TEC";
+            arrangements[2] = "DTEC  Læreband-Amager Plads";
+                
+                
+
         }
     }
 
